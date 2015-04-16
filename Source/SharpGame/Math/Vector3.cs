@@ -1,0 +1,117 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GameFramework
+{
+    public struct Vector3
+    {
+        public float x;
+        public float y;
+        public float z;
+
+        public Vector3(float x, float y, float z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+
+        public float LengthSquared
+        {
+            get
+            {
+                return x * x + y * y + z * z;
+            }
+        }
+
+        public float Length
+        {
+            get
+            {
+                // TODO: provide fast float sqrt method instead of using standart one
+                return (float)System.Math.Sqrt(LengthSquared);
+            }
+        }
+
+        public static float Dot(Vector3 a, Vector3 b)
+        {
+            return a.x * b.x + a.y * b.y + a.z * b.z;
+        }
+
+        public float Dot(Vector3 that)
+        {
+            return Dot(this, that);
+        }
+
+        public Vector3 Cross(Vector3 a, Vector3 b)
+        {
+            return new Vector3(
+                a.y * b.z - a.z * b.y,
+                a.z * b.x - a.x * b.z,
+                a.x * b.y - a.y * b.x);
+        }
+
+        public static Vector3 operator +(Vector3 a, Vector3 b)
+        {
+            return new Vector3(
+                a.x + b.x,
+                a.y + b.y,
+                a.z + b.z);
+        }
+
+        public static Vector3 operator *(Vector3 vec, float scalar)
+        {
+            return new Vector3(
+                vec.x * scalar,
+                vec.y * scalar,
+                vec.z * scalar);
+        }
+
+        public static Vector3 operator -(Vector3 vec)
+        {
+            return vec * -1f;
+        }
+
+        public static Vector3 operator -(Vector3 a, Vector3 b)
+        {
+            return a + (-b);
+        }
+
+        public static bool operator ==(Vector3 a, Vector3 b)
+        {
+            return a.x == b.x &&
+                   a.y == b.y &&
+                   a.z == b.z;
+        }
+
+        public static bool operator !=(Vector3 a, Vector3 b)
+        {
+            return !(a == b);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Vector3)
+            {
+                Vector3 that = (Vector3)obj;
+                return this == that;
+            }
+
+            return false;
+        }
+
+        public bool Equals(Vector3 that)
+        {
+            return this == that;
+        }
+
+        public override int GetHashCode()
+        {
+            // TODO: provide efficient hashing algorithm instead of relying on strings
+            return string.Format("{0}{1}{2}", x, y, z).GetHashCode();
+        }
+    }
+}
