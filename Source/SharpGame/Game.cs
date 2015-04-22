@@ -9,6 +9,7 @@ namespace GameFramework
 
         private bool initialized;
         private bool runing;
+
         private bool exitQueued;
 
         public bool Initialize()
