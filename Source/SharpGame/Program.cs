@@ -7,6 +7,15 @@
             Actor actor = new Actor();
             TestComponentA testCmpA = new TestComponentA();
             TestComponentB testCmpB = new TestComponentB();
+            SymbolDrawer rak = new SymbolDrawer();
+            rak.desk = new char[,]
+            {
+                {' ','#',' '},
+                {' ','#',' '},
+                {' ','#',' '},
+                {' ','#',' '},
+                {' ','#',' '}
+            };
 
             actor.AddEntity(testCmpA);
             actor.AddEntity(testCmpB);
