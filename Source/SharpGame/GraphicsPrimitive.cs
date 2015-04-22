@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace GameFramework
 {
-    struct GraphicsPrimitive
+   public struct GraphicsPrimitive
     {
-        char symbol{get;set;}
-        ConsoleColor foregrcolor { get; set; }
-        ConsoleColor backgrcolor { get; set; }
-        float depth { get; set; }
+        public char symbol {get;set;}
+        public ConsoleColor foregrcolor { get; set; }
+        public ConsoleColor backgrcolor { get; set; }
+        public float depth { get; set; }
 
-        GraphicsPrimitive(char symbol, ConsoleColor foregrcolor, ConsoleColor backgrcolor, float depth)
+       public GraphicsPrimitive(char symbol, ConsoleColor foregrcolor, ConsoleColor backgrcolor, float depth)
             : this()
         {
             this.symbol = symbol;

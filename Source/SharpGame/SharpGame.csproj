@@ -44,7 +44,6 @@
     <Compile Include="ActorSystem\Actor.cs" />
     <Compile Include="ActorSystem\ActorComponent.cs" />
     <Compile Include="ActorSystem\Components\ColoredText.cs" />
-    <Compile Include="ActorSystem\Components\SymbolDrawer.cs" />
     <Compile Include="ActorSystem\Components\TestComponentA.cs" />
     <Compile Include="ActorSystem\Components\TestComponentB.cs" />
     <Compile Include="ActorSystem\BaseSystem\GameEntityContainer.cs" />

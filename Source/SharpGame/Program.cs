@@ -4,24 +4,13 @@
     {
         static void Main(string[] args)
         {
-            Actor actor = new Actor();
-            TestComponentA testCmpA = new TestComponentA();
-            TestComponentB testCmpB = new TestComponentB();
-            SymbolDrawer rak = new SymbolDrawer();
-            rak.desk = new char[,]
-            {
-                {' ','#',' '},
-                {' ','#',' '},
-                {' ','#',' '},
-                {' ','#',' '},
-                {' ','#',' '}
-            };
-
-            actor.AddEntity(testCmpA);
-            actor.AddEntity(testCmpB);
+            Actor Raketka = new Actor();
+            ColoredText rakpaint= new ColoredText();
+            
+            Raketka.AddEntity(rakpaint);
 
             Scene scene = new Scene();
-            scene.AddEntity(actor);
+            scene.AddEntity(Raketka);
 
             Game game = new Game();
             game.TargetFPS = 60;
