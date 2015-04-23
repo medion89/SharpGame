@@ -8,9 +8,9 @@ namespace GameFramework
 {
     public class ColoredText : ActorComponent
     {
-       
+
         public char[,] text;
-       
+
 
         ConsoleColor Foreground;
         ConsoleColor Background;
@@ -19,7 +19,7 @@ namespace GameFramework
         {
             Foreground = foreground;
             Background = background;
-            
+
         }
         public override void Awake()
         {
@@ -39,17 +39,14 @@ namespace GameFramework
             int curentx = (int)Parent.Position.x - centrx;
             int curenty = (int)Parent.Position.y - centry;
             Console.SetCursorPosition(curentx, curenty);
-            for (int y = 0; y < text.GetLength(0); y++)
+            for (int x = 0; x < text.GetLength(0); x++)
             {
-                for (int x = 0; x < text.GetLength(1); x++)
+                for (int y = 0; y < text.GetLength(1); y++)
                 {
-                    Console.WriteLine(text[curenty, curentx]);
+                    Console.WriteLine(text[x, y]);
                 }
             }
         }
-
     }
-
-
 }
 
