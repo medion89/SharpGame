@@ -39,8 +39,8 @@ namespace GameFramework
                         Console.Write(' ');
                     else
                     {
-                        Console.BackgroundColor = buff1[i, j].backgrcolor;
-                        Console.ForegroundColor = buff1[i, j].foregrcolor;
+                        Console.BackgroundColor = buff1[i, j].background;
+                        Console.ForegroundColor = buff1[i, j].foreground;
                         Console.Write(buff1[i, j].symbol);
                         Console.ResetColor();
                     }

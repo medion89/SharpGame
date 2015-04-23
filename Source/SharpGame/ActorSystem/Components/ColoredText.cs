@@ -37,14 +37,19 @@ namespace GameFramework
             int centry = (int)text.GetLength(1) / 2;
 
             int curentx = (int)Parent.Position.x - centrx;
-            int curenty = (int)Parent.Position.y - centry;
-            Console.SetCursorPosition(curentx, curenty);
+            int curenty = (int)Parent.Position.y - centry;          
+            
+
             for (int x = 0; x < text.GetLength(0); x++)
             {
+                
                 for (int y = 0; y < text.GetLength(1); y++)
-                {
-                    Console.WriteLine(text[x, y]);
-                }
+                {                   
+                    
+                    Game.Graphic.SetSymbol(curentx, curenty, new GraphicsPrimitive(text[x, y],  Foreground, Background,Parent.Position.z));
+
+                } 
+                
             }
         }
     }

@@ -9,16 +9,16 @@ namespace GameFramework
    public struct GraphicsPrimitive
     {
         public char symbol {get;set;}
-        public ConsoleColor foregrcolor { get; set; }
-        public ConsoleColor backgrcolor { get; set; }
+        public ConsoleColor foreground { get; set; }
+        public ConsoleColor background { get; set; }
         public float depth { get; set; }
 
-       public GraphicsPrimitive(char symbol, ConsoleColor foregrcolor, ConsoleColor backgrcolor, float depth)
+        public GraphicsPrimitive(char symbol, ConsoleColor foreground, ConsoleColor background, float depth)
             : this()
         {
             this.symbol = symbol;
-            this.foregrcolor = foregrcolor;
-            this.backgrcolor = backgrcolor;
+            this.foreground = foreground;
+            this.background = background;
             this.depth = depth;
         }
 

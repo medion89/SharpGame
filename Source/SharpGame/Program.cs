@@ -13,13 +13,13 @@ namespace GameFramework
             Actor actor2 = new Actor();
 
             actor.Position = new Vector3(5, 5, 0);
-            actor2.Position = new Vector3(5, 17, 0);
+            actor2.Position = new Vector3(25, 5, 0);
 
             ColoredText rocket1 = new ColoredText(ConsoleColor.Red, ConsoleColor.Blue);
             rocket1.text = new char[,]
-            {{' ','#',' '},
-             {' ','#',' '},
-             {' ','#',' '},
+           {{' ','#',' '},
+            {' ','#',' '},
+            {' ','#',' '},
              {' ','#',' '},
              {' ','#',' '}};
 
