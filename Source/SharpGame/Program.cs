@@ -15,15 +15,15 @@ namespace GameFramework
             actor.Position = new Vector3(5, 5, 0);
             actor2.Position = new Vector3(25, 5, 0);
 
-            ColoredText rocket1 = new ColoredText(ConsoleColor.Red, ConsoleColor.Blue);
+            ColoredText rocket1 = new ColoredText(ConsoleColor.Blue, ConsoleColor.DarkGreen);
             rocket1.text = new char[,]
            {{' ','#',' '},
             {' ','#',' '},
             {' ','#',' '},
-             {' ','#',' '},
-             {' ','#',' '}};
+            {' ','#',' '},
+            {' ','#',' '}};
 
-            ColoredText rocket2 = new ColoredText(ConsoleColor.Red, ConsoleColor.Blue);
+            ColoredText rocket2 = new ColoredText(ConsoleColor.Blue, ConsoleColor.DarkGreen);
 
             rocket2.text = new char[,]
             {{' ','#',' '},

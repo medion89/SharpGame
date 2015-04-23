@@ -13,13 +13,13 @@ namespace GameFramework
         public ConsoleColor background { get; set; }
         public float depth { get; set; }
 
-        public GraphicsPrimitive(char symbol, ConsoleColor foreground, ConsoleColor background, float depth)
+        public GraphicsPrimitive(char sy, ConsoleColor f, ConsoleColor b, float d)
             : this()
         {
-            this.symbol = symbol;
-            this.foreground = foreground;
-            this.background = background;
-            this.depth = depth;
+            this.symbol = sy;
+            this.foreground = f;
+            this.background = b;
+            this.depth = d;
         }
 
        public static readonly GraphicsPrimitive BlackSpace = new GraphicsPrimitive(' ', ConsoleColor.Black, ConsoleColor.Black, 0);

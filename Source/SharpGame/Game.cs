@@ -14,6 +14,7 @@ namespace GameFramework
 
         public bool Initialize()
         {
+            Graphic=new Graphic();
             // here all initialization will occur
             initialized = true;
             return true;
@@ -23,7 +24,7 @@ namespace GameFramework
         {
             Debug.Assert(initialized);
             Debug.Assert(!runing);
-
+            
             runing = true;
             Stopwatch time = new Stopwatch();
             time.Start();
