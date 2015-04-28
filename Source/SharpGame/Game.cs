@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Threading;
 
 namespace GameFramework
@@ -7,13 +8,16 @@ namespace GameFramework
     {
         public int TargetFPS { get; set; }
 
+        public Graphics Graphics { get; private set; }
+
         private bool initialized;
         private bool runing;
         private bool exitQueued;
 
         public bool Initialize()
         {
-            // here all initialization will occur
+            Graphics = new Graphics();
+
             initialized = true;
             return true;
         }
@@ -53,7 +57,8 @@ namespace GameFramework
 
         private void Shutdown()
         {
-            // here will reside all shutdown code
+            Graphics = null;
+
             initialized = false;
         }
 
