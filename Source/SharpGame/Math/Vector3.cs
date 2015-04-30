@@ -36,6 +36,14 @@ namespace GameFramework
             }
         }
 
+        public Vector3 Normalized
+        {
+            get
+            {
+                return this / Length;
+            }
+        }
+
         public static float Dot(Vector3 a, Vector3 b)
         {
             return a.x * b.x + a.y * b.y + a.z * b.z;
@@ -68,6 +76,11 @@ namespace GameFramework
                 vec.x * scalar,
                 vec.y * scalar,
                 vec.z * scalar);
+        }
+
+        public static Vector3 operator /(Vector3 vec, float scalar)
+        {
+            return vec * (1f / scalar);
         }
 
         public static Vector3 operator -(Vector3 vec)
