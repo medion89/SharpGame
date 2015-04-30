@@ -23,5 +23,10 @@ namespace GameFramework
         public virtual void Update(float deltaTime) { }
 
         public virtual void OnDestroy() { }
+
+        public virtual void OnCollide(Actor C)
+        {
+
+        }
     }
 }

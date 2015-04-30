@@ -43,17 +43,20 @@
   <ItemGroup>
     <Compile Include="ActorSystem\Actor.cs" />
     <Compile Include="ActorSystem\ActorComponent.cs" />
+    <Compile Include="ActorSystem\Components\Collider.cs" />
     <Compile Include="ActorSystem\Components\ColoredText.cs" />
+    <Compile Include="ActorSystem\Components\Racket.cs" />
     <Compile Include="ActorSystem\Components\TestComponentA.cs" />
     <Compile Include="ActorSystem\Components\TestComponentB.cs" />
     <Compile Include="ActorSystem\BaseSystem\GameEntityContainer.cs" />
     <Compile Include="ActorSystem\BaseSystem\IComposed.cs" />
     <Compile Include="ActorSystem\BaseSystem\IGameEntity.cs" />
-    <Compile Include="Graphic.cs" />
-    <Compile Include="GraphicsPrimitive.cs" />
+    <Compile Include="GraphSys\Graphic.cs" />
+    <Compile Include="GraphSys\GraphicsPrimitive.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Math\Vector3.cs" />
+    <Compile Include="PhysSys\Physic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ActorSystem\Scene.cs" />

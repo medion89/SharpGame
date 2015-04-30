@@ -11,10 +11,11 @@ namespace GameFramework
         {
             Actor actor = new Actor();
             Actor actor2 = new Actor();
-
+            Racket turr = new Racket();
+            actor.AddEntity(turr);
             actor.Position = new Vector3(5, 5, 0);
-            actor2.Position = new Vector3(25, 5, 0);
-
+            actor2.Position = new Vector3(5, 30, 0);
+            
             ColoredText rocket1 = new ColoredText(ConsoleColor.Blue, ConsoleColor.DarkGreen);
             rocket1.text = new char[,]
            {{' ','#',' '},
@@ -26,14 +27,15 @@ namespace GameFramework
             ColoredText rocket2 = new ColoredText(ConsoleColor.Blue, ConsoleColor.DarkGreen);
 
             rocket2.text = new char[,]
-            {{' ','#',' '},
-             {' ','#',' '},
-             {' ','#',' '},
-             {' ','#',' '},
-             {' ','#',' '}};
+           {{' ','#',' '},
+           {' ','#',' '},
+           {' ','#',' '},
+           {' ','#',' '},
+            {' ','#',' '}};
 
             actor.AddEntity(rocket1);
             actor2.AddEntity(rocket2);
+            
 
             Scene scene = new Scene();
             scene.AddEntity(actor);

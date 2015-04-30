@@ -4,6 +4,10 @@ namespace GameFramework
 {
     public class Input
     {
+        enum KeyCode: int
+        {
+            Up,Down
+        }
         /** 
          * A positional bit flag indicating the part of a key state denoting key pressed.
          */

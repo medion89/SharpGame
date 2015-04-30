@@ -35,10 +35,9 @@ namespace GameFramework
             while (!exitQueued)
             {
                 float delta = time.ElapsedMilliseconds / 1000f;
-                time.Restart();
-
+                time.Restart();                
                 scene.Update(delta);
-
+                Graphic.DrawCell();
                 SleepToMatchFramerate(TargetFPS, time.ElapsedMilliseconds / 1000f);
             }
 
@@ -55,6 +54,8 @@ namespace GameFramework
 
         private void Shutdown()
         {
+            Graphic = null;
+
             // here will reside all shutdown code
             initialized = false;
         }

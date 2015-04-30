@@ -35,5 +35,19 @@ namespace GameFramework
 
             return foundComponents;
         }
+        
+        public void OnCollide(Actor CollisionActor) 
+        { 
+            for (int i = 0; i < entities.Count; i++)
+            {
+                entities[i].OnCollide(CollisionActor);   
+            }
+
+        }
+
+        internal static void OnCollide()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

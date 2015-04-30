@@ -10,8 +10,6 @@ namespace GameFramework
     {
 
         public char[,] text;
-
-
         ConsoleColor Foreground;
         ConsoleColor Background;
 
@@ -19,7 +17,6 @@ namespace GameFramework
         {
             Foreground = foreground;
             Background = background;
-
         }
         public override void Awake()
         {
@@ -48,7 +45,7 @@ namespace GameFramework
                     if (curenty + y < 0 || curentx + x < 0)
                         continue;
 
-                    Game.Graphic.SetSymbol(curentx, curenty, new GraphicsPrimitive(text[x, y],  Foreground, Background,Parent.Position.z));
+                    Game.Graphic.SetSymbol(curentx+x, curenty+y, new GraphicsPrimitive(text[x, y],  Foreground, Background,Parent.Position.z));
                   
                 } 
                 
