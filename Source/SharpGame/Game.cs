@@ -39,7 +39,10 @@ namespace GameFramework
                 float delta = time.ElapsedMilliseconds / 1000f;
                 time.Restart();
 
+                Graphics.ClearBuffer();
                 scene.Update(delta);
+                Graphics.DrawOnScreen();
+                Graphics.SwapBuffers();
 
                 SleepToMatchFramerate(TargetFPS, time.ElapsedMilliseconds / 1000f);
             }

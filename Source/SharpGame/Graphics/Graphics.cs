@@ -25,6 +25,8 @@ namespace GameFramework
 
             frontBuffer = new GraphicPrimitive[Height, Width];
             backBuffer = new GraphicPrimitive[Height, Width];
+
+            Console.CursorVisible = false;
         }
 
         public void ClearBuffer()
@@ -60,6 +62,9 @@ namespace GameFramework
 
         public void DrawPrimitive(int x, int y, GraphicPrimitive primitive)
         {
+            if (x < 0 || x >= Width || y < 0 || y >= Height)
+                return;
+
             if (frontBuffer[y, x].depth < primitive.depth)
                 frontBuffer[y, x] = primitive;
         }
