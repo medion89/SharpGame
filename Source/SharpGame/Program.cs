@@ -47,6 +47,8 @@
             actorA.AddChild(actorB);
             scene.AddChild(actorA);
 
+            actorB.WorldPosition = Vector3.Zero;
+
             //***** Game Setup *****//
             Game game = new Game();
             game.TargetFPS = 60;

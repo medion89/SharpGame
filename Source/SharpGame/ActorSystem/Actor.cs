@@ -43,6 +43,11 @@ namespace GameFramework
 
                 return LocalPosition + offset;
             }
+            set
+            {
+                Vector3 offset = value - WorldPosition;
+                LocalPosition += offset;
+            }
         }
 
         public Vector3 LocalPosition { get; set; }
