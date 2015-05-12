@@ -30,7 +30,7 @@ namespace GameFramework
             runing = true;
             Stopwatch time = new Stopwatch();
             time.Start();
-            scene.Parent = this;
+            scene.Game = this;
             scene.Awake();
             scene.Start();
 
