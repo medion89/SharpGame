@@ -21,15 +21,16 @@ namespace GameFramework
             int width = Text.GetLength(1);
             int height = Text.GetLength(0);
 
-            int startX = (int)(Actor.Position.x - width * 0.5f);
-            int startY = (int)(Actor.Position.y - height * 0.5f);
+            Vector3 actorPosition = Actor.WorldPosition;
+            int startX = (int)(actorPosition.x - width * 0.5f);
+            int startY = (int)(actorPosition.y - height * 0.5f);
 
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
                 {
                     Game.Graphics.DrawPrimitive(startX + x, startY + y,
-                        new GraphicPrimitive(Text[y, x], ForegroundColor, BackgroundColor, Actor.Position.z));
+                        new GraphicPrimitive(Text[y, x], ForegroundColor, BackgroundColor, actorPosition.z));
                 }
             }
         }

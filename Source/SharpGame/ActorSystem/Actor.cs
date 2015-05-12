@@ -29,7 +29,23 @@ namespace GameFramework
 
         public string Name { get; set; }
 
-        public Vector3 Position { get; set; }
+        public Vector3 WorldPosition
+        {
+            get
+            {
+                Vector3 offset = Vector3.Zero;
+                Actor parent = Parent;
+                while (parent != null)
+                {
+                    offset += parent.LocalPosition;
+                    parent = parent.Parent;
+                }
+
+                return LocalPosition + offset;
+            }
+        }
+
+        public Vector3 LocalPosition { get; set; }
 
         private ComponentContainer componentContainer;
 

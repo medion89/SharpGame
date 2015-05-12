@@ -21,7 +21,7 @@
 
             actorA.AddComponent(coloredTextA);
             actorA.AddComponent(testComponentA);
-            actorA.Position = new Vector3(5, 5, 0);
+            actorA.LocalPosition = new Vector3(5, 5, 0);
 
             //***** Actor B *****//
             Actor actorB = new Actor("ActorB");
@@ -40,7 +40,7 @@
 
             actorB.AddComponent(coloredTextB);
             actorB.AddComponent(testComponentB);
-            actorB.Position = new Vector3(10, 10, 0);
+            actorB.LocalPosition = new Vector3(10, 10, 0);
 
             //***** Scene Setup *****//
             Scene scene = new Scene();
