@@ -3,28 +3,23 @@ using System.Diagnostics;
 
 namespace GameFramework.Internal
 {
-    public abstract class GameEntityContainer<TGameEntity, TSelf> : IGameEntity 
-        where TGameEntity : IGameEntity, IComposed<TSelf>
-        where TSelf : GameEntityContainer<TGameEntity, TSelf>
+    public abstract class GameEntityContainer<TGameEntity> : IGameEntity 
+        where TGameEntity : IGameEntity
     {
-        protected List<TGameEntity> entities;
+        protected List<TGameEntity> children;
 
         protected bool GameStarted { get; private set; }
 
         public GameEntityContainer()
         {
-            entities = new List<TGameEntity>();
+            children = new List<TGameEntity>();
             GameStarted = false;
         }
 
-        public void AddEntity(TGameEntity entity)
+        public virtual void AddChild(TGameEntity entity)
         {
-            entities.Add(entity);
+            children.Add(entity);
             entity.Awake();
-
-            TSelf self = this as TSelf;
-            Debug.Assert(self != null, "Your class is ill-formed, TSelf should be the type of derrived class!");
-            entity.Parent = self;
 
             if (GameStarted)
             {
@@ -34,32 +29,32 @@ namespace GameFramework.Internal
 
         public virtual void Awake() { }
 
-        public void Start()
+        public virtual void Start()
         {
-            for (int i = 0; i < entities.Count; i++)
+            for (int i = 0; i < children.Count; i++)
             {
-                entities[i].Start();
+                children[i].Start();
             }
 
             GameStarted = true;
         }
 
-        public void Update(float deltaTime)
+        public virtual void Update(float deltaTime)
         {
-            for (int i = 0; i < entities.Count; i++)
+            for (int i = 0; i < children.Count; i++)
             {
-                entities[i].Update(deltaTime);
+                children[i].Update(deltaTime);
             }
         }
 
-        public void OnDestroy()
+        public virtual void OnDestroy()
         {
-            for (int i = 0; i < entities.Count; i++)
+            for (int i = 0; i < children.Count; i++)
             {
-                entities[i].OnDestroy();
+                children[i].OnDestroy();
             }
 
-            entities.Clear();
+            children.Clear();
         }
     }
 }

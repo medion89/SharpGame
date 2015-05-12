@@ -9,7 +9,7 @@ namespace GameFramework
 
         public override void Update(float deltaTime)
         {
-            Parent.Position += Direction * Speed * deltaTime;
+            Actor.LocalPosition += Direction * Speed * deltaTime;
         }
     }
 }

@@ -8,6 +8,12 @@ namespace GameFramework
 {
     public struct Vector3
     {
+        #region Predefined Vectors
+        public static readonly Vector3 Zero = new Vector3(0, 0, 0);
+        public static readonly Vector3 Up = new Vector3(0, -1f, 0);
+        public static readonly Vector3 Right = new Vector3(1, 0, 0);
+        #endregion
+
         public float x;
         public float y;
         public float z;

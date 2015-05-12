@@ -4,16 +4,23 @@ using GameFramework.Internal;
 
 namespace GameFramework
 {
-    public class Scene : GameEntityContainer<Actor, Scene>, IComposed<Game>
+    public class Scene : GameEntityContainer<Actor>
     {
-        public Game Parent { get; set; }
+        public Game Game { get; set; }
+
+        public override void AddChild(Actor actor)
+        {
+            actor.Scene = this;
+
+            base.AddChild(actor);
+        }
 
         public WeakReference<Actor> GetActor(string name)
         {
-            for (int i = 0; i < entities.Count; i++)
+            for (int i = 0; i < children.Count; i++)
             {
-                if (entities[i].Name == name)
-                    return new WeakReference<Actor>(entities[i]);
+                if (children[i].Name == name)
+                    return new WeakReference<Actor>(children[i]);
             }
 
             return new WeakReference<Actor>(null);
@@ -23,10 +30,10 @@ namespace GameFramework
         {
             var foundActors = new List<WeakReference<Actor>>();
 
-            for (int i = 0; i < entities.Count; i++)
+            for (int i = 0; i < children.Count; i++)
             {
-                if (entities[i].Name == name)
-                    foundActors.Add(new WeakReference<Actor>(entities[i]));
+                if (children[i].Name == name)
+                    foundActors.Add(new WeakReference<Actor>(children[i]));
             }
 
             return foundActors;

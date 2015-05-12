@@ -4,27 +4,52 @@
     {
         static void Main(string[] args)
         {
-            Actor actor = new Actor();
-            ColoredText ct = new ColoredText();
-            ct.Text = new char[,] {
+            //***** Actor A *****//
+            Actor actorA = new Actor("ActorB");
+            ColoredText coloredTextA = new ColoredText();
+            coloredTextA.Text = new char[,] {
                 { '#', '#', '#'},
-                { '#', '@', '#'},
+                { '#', 'A', '#'},
                 { '#', '#', '#'}
             };
-            ct.ForegroundColor = System.ConsoleColor.Cyan;
-            ct.BackgroundColor = System.ConsoleColor.DarkGray;
+            coloredTextA.ForegroundColor = System.ConsoleColor.Cyan;
+            coloredTextA.BackgroundColor = System.ConsoleColor.DarkGray;
 
-            TestComponentB testComp = new TestComponentB();
-            testComp.Direction = new Vector3(1, 1, 0).Normalized;
-            testComp.Speed = 1f;
+            TestComponentB testComponentA = new TestComponentB();
+            testComponentA.Direction = new Vector3(1, 1, 0).Normalized;
+            testComponentA.Speed = 1f;
 
-            actor.AddEntity(ct);
-            actor.AddEntity(testComp);
-            actor.Position = new Vector3(5, 5, 0);
+            actorA.AddComponent(coloredTextA);
+            actorA.AddComponent(testComponentA);
+            actorA.LocalPosition = new Vector3(5, 5, 0);
 
+            //***** Actor B *****//
+            Actor actorB = new Actor("ActorB");
+            ColoredText coloredTextB = new ColoredText();
+            coloredTextB.Text = new char[,] {
+                { '#', '#', '#'},
+                { '#', 'B', '#'},
+                { '#', '#', '#'}
+            };
+            coloredTextB.ForegroundColor = System.ConsoleColor.DarkGray;
+            coloredTextB.BackgroundColor = System.ConsoleColor.Cyan;
+
+            TestComponentB testComponentB = new TestComponentB();
+            testComponentB.Direction = new Vector3(1, 1, 0).Normalized;
+            testComponentB.Speed = 1f;
+
+            actorB.AddComponent(coloredTextB);
+            actorB.AddComponent(testComponentB);
+            actorB.LocalPosition = new Vector3(10, 10, 0);
+
+            //***** Scene Setup *****//
             Scene scene = new Scene();
-            scene.AddEntity(actor);
+            actorA.AddChild(actorB);
+            scene.AddChild(actorA);
 
+            actorB.WorldPosition = Vector3.Zero;
+
+            //***** Game Setup *****//
             Game game = new Game();
             game.TargetFPS = 60;
             game.Initialize();
