@@ -8,7 +8,8 @@ namespace GameFramework
 {
     public class Racket : ActorComponent
     {
-
+        
+        
         
         public override void Awake()
         {
@@ -26,13 +27,16 @@ namespace GameFramework
 
             if (Input.IsKeyDown(ConsoleKey.UpArrow)&&Parent.Position.x > 0)
             {
+                
                 Parent.Position = new Vector3(Parent.Position.x-1, Parent.Position.y, Parent.Position.z);
+                
             }
 
-            if (Input.IsKeyDown(ConsoleKey.DownArrow) && Parent.Position.x > 0)
+            if (Input.IsKeyDown(ConsoleKey.DownArrow) && Parent.Position.x <= Console.WindowHeight )
             {
-
+                
                 Parent.Position = new Vector3(Parent.Position.x + 1, Parent.Position.y, Parent.Position.z);
+                
             }
 
         }

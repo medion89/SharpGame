@@ -12,7 +12,7 @@ namespace GameFramework
          
         public Physic()
         {
-            collussionSpace = new List<Actor>[20, 40];
+            collussionSpace = new List<Actor>[50, 45];
                for(int i=0;i<collussionSpace.GetLength(0);i++)
                    for(int j=0;j<collussionSpace.GetLength(1);j++)
                        collussionSpace[i,j]= new List<Actor>();

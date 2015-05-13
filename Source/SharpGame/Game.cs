@@ -11,10 +11,12 @@ namespace GameFramework
         private bool runing;
         private bool exitQueued;
         public Graphic Graphic;
+        public Physic Physic;
 
         public bool Initialize()
         {
-            Graphic=new Graphic();
+            Graphic = new Graphic();
+            Physic = new Physic();
             // here all initialization will occur
             initialized = true;
             return true;
@@ -35,9 +37,13 @@ namespace GameFramework
             while (!exitQueued)
             {
                 float delta = time.ElapsedMilliseconds / 1000f;
-                time.Restart();                
+                time.Restart();
+
+                Graphic.BuffClear();
                 scene.Update(delta);
-                Graphic.DrawCell();
+                Graphic.DrawonScreen();
+                Graphic.BuffClone();
+
                 SleepToMatchFramerate(TargetFPS, time.ElapsedMilliseconds / 1000f);
             }
 
@@ -55,6 +61,7 @@ namespace GameFramework
         private void Shutdown()
         {
             Graphic = null;
+            Physic = null;
 
             // here will reside all shutdown code
             initialized = false;
