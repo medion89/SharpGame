@@ -87,6 +87,13 @@ namespace GameFramework
             base.Update(deltaTime);
         }
 
+        public override void Draw(float deltaTime)
+        {
+            componentContainer.Draw(deltaTime);
+
+            base.Draw(deltaTime);
+        }
+
         public override void OnDestroy()
         {
             componentContainer.OnDestroy();
