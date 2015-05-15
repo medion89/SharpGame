@@ -47,6 +47,14 @@ namespace GameFramework.Internal
             }
         }
 
+		public virtual void Draw(float deltaTime)
+		{
+			for (int i = 0; i < children.Count; i++)
+			{
+				children[i].Draw(deltaTime);
+			}
+		}
+
         public virtual void OnDestroy()
         {
             for (int i = 0; i < children.Count; i++)

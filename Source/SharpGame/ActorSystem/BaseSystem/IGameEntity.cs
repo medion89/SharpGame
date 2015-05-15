@@ -8,6 +8,8 @@
 
         void Update(float deltaTime);
 
+		void Draw (float deltaTime);
+
         void OnDestroy();
     }
 }

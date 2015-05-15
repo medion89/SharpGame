@@ -41,6 +41,7 @@ namespace GameFramework
 
                 Graphics.ClearBuffer();
                 scene.Update(delta);
+                scene.Draw(delta);
                 Graphics.DrawOnScreen();
                 Graphics.SwapBuffers();
 
