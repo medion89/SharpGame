@@ -45,7 +45,7 @@
             //***** Scene Setup *****//
             Scene scene = new Scene();
             actorA.AddChild(actorB);
-            scene.AddChild(actorA);
+            scene.AddActor(actorA);
 
             actorB.WorldPosition = Vector3.Zero;
 

@@ -22,25 +22,25 @@ namespace SharpGame.Internal
             base.AddChild(component);
         }
 
-        public WeakReference<TComponent> GetComponent<TComponent>() where TComponent : class
+        public TComponent GetComponent<TComponent>() where TComponent : class
         {
             for (int i = 0; i < children.Count; i++)
             {
                 if (children[i] is TComponent)
-                    return new WeakReference<TComponent>(children[i] as TComponent);
+                    return children[i] as TComponent;
             }
 
-            return new WeakReference<TComponent>(null);
+            return null;
         }
 
-        public List<WeakReference<TComponent>> GetAllComponents<TComponent>() where TComponent : class
+        public List<TComponent> GetAllComponents<TComponent>() where TComponent : class
         {
-            List<WeakReference<TComponent>> foundComponents = new List<WeakReference<TComponent>>();
+            var foundComponents = new List<TComponent>();
 
             for (int i = 0; i < children.Count; i++)
             {
                 if (children[i] is TComponent)
-                    foundComponents.Add(new WeakReference<TComponent>(children[i] as TComponent));
+                    foundComponents.Add(children[i] as TComponent);
             }
 
             return foundComponents;

@@ -107,12 +107,12 @@ namespace SharpGame
             componentContainer.AddChild(component);
         }
 
-        public WeakReference<TComponent> GetComponent<TComponent>() where TComponent : class
+        public TComponent GetComponent<TComponent>() where TComponent : class
         {
             return componentContainer.GetComponent<TComponent>();
         }
 
-        public List<WeakReference<TComponent>> GetAllComponents<TComponent>() where TComponent : class
+        public List<TComponent> GetAllComponents<TComponent>() where TComponent : class
         {
             return componentContainer.GetAllComponents<TComponent>();
         }
