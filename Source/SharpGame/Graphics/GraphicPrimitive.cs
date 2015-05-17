@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SharpGame
 {
+// We don't need Equals(o) and GetHashCode() in this structure at the moment, so disable those warnings
+#pragma warning disable CS0660, CS0661
     public struct GraphicPrimitive
+#pragma warning restore CS0660, CS0661
     {
         public char symbol;
         public ConsoleColor foregroundColor;
