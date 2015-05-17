@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 
-namespace GameFramework
+namespace SharpGame
 {
     public class Game
     {

@@ -1,4 +1,4 @@
-﻿namespace GameFramework
+﻿namespace SharpGame
 {
     class Program
     {

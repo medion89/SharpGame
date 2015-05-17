@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameFramework.Internal;
+using SharpGame.Internal;
 
-namespace GameFramework
+namespace SharpGame
 {
     public class Scene : GameEntityContainer<Actor>
     {
