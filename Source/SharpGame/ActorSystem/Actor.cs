@@ -60,6 +60,7 @@ namespace SharpGame
             componentContainer = new ComponentContainer(this);
         }
 
+        #region Children
         public override void AddChild(Actor actor)
         {
             actor.Parent = this;
@@ -68,11 +69,73 @@ namespace SharpGame
             base.AddChild(actor);
         }
 
-        public List<Actor> GetAllChildren()
+        public Actor FindChild(Predicate<Actor> predicate)
         {
-            return new List<Actor>(children);
+            Actor foundActor;
+            for (int i = 0; i < children.Count; i++)
+            {
+                foundActor = children[i].FindChildRecursive(predicate);
+
+                if (foundActor != null)
+                    return foundActor;
+            }
+
+            return null;
         }
 
+        private Actor FindChildRecursive(Predicate<Actor> predicate)
+        {
+            if (predicate(this))
+                return this;
+            else
+            {
+                for (int i = 0; i < children.Count; i++)
+                {
+                    Actor foundActor = children[i].FindChildRecursive(predicate);
+
+                    if (foundActor != null)
+                        return foundActor;
+                }
+
+                return null;
+            }
+        }
+
+        public List<Actor> FindAllChildren(Predicate<Actor> predicate)
+        {
+            var foundActors = new List<Actor>();
+            children.ForEach(child => child.FindAllChildrenRecursive(predicate, foundActors));
+
+            return foundActors;
+        }
+
+        private void FindAllChildrenRecursive(Predicate<Actor> predicate, List<Actor> outList)
+        {
+            if (predicate(this))
+                outList.Add(this);
+            
+            children.ForEach(child => child.FindAllChildrenRecursive(predicate, outList));
+        }
+        #endregion
+
+        #region Components
+        public void AddComponent(ActorComponent component)
+        {
+            componentContainer.AddChild(component);
+        }
+
+        public TComponent GetComponent<TComponent>() where TComponent : class
+        {
+            return componentContainer.GetComponent<TComponent>();
+        }
+
+        public List<TComponent> GetAllComponents<TComponent>() where TComponent : class
+        {
+            return componentContainer.GetAllComponents<TComponent>();
+        }
+        #endregion
+
+        #region IGameEntity implementation
         public override void Start()
         {
             componentContainer.Start();
@@ -101,20 +164,6 @@ namespace SharpGame
 
             base.OnDestroy();
         }
-
-        public void AddComponent(ActorComponent component)
-        {
-            componentContainer.AddChild(component);
-        }
-
-        public TComponent GetComponent<TComponent>() where TComponent : class
-        {
-            return componentContainer.GetComponent<TComponent>();
-        }
-
-        public List<TComponent> GetAllComponents<TComponent>() where TComponent : class
-        {
-            return componentContainer.GetAllComponents<TComponent>();
-        }
+        #endregion
     }
 }

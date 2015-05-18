@@ -16,10 +16,22 @@ namespace SharpGame
             rootActor.Scene = this;
         }
 
+        #region Actors
         public void AddActor(Actor actor)
         {
             rootActor.AddChild(actor);
         }
+
+        public Actor FindActor(Predicate<Actor> predicate)
+        {
+            return rootActor.FindChild(predicate);
+        }
+
+        public List<Actor> FindAllActors(Predicate<Actor> predicate)
+        {
+            return rootActor.FindAllChildren(predicate);
+        }
+        #endregion
 
         #region IGameEntity implementation
         public void Awake()
