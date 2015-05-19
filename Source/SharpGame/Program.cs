@@ -1,24 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-using System.Reflection;
+﻿using System.Diagnostics;
 
 namespace SharpGame
 {
     class Program
     {
-        struct TestStruct
-        {
-            public string nameField;
-            public string stringProp { get; set; }
-            public int intField;
-            public int intProp { get; set; }
-            public bool boolField;
-            public bool boolProp { get; set; }
-            public Vector3 vec;
-        }
-
         static void Main(string[] args)
         {
             TestActorsSearching();
@@ -61,19 +46,6 @@ namespace SharpGame
             actorB.AddComponent(testComponentB);
             actorB.LocalPosition = new Vector3(10, 10, 0);
 
-            TestStruct obj = new TestStruct()
-            {
-                nameField = "Genrih",
-                stringProp = "Venna",
-                intField = 42,
-                intProp = 33,
-                boolField = true,
-                boolProp = false,
-                vec = new Vector3(3, 2, 1)
-            };
-
-            File.WriteAllText("./actorB.actor", SerializeObject(obj));
-
             //***** Scene Setup *****//
             Scene scene = new Scene();
             actorA.AddChild(actorB);
@@ -81,53 +53,11 @@ namespace SharpGame
 
             actorB.WorldPosition = Vector3.Zero;
 
-
             //***** Game Setup *****//
             Game game = new Game();
             game.TargetFPS = 60;
             game.Initialize();
             game.Run(scene);
-        }
-
-        public static string SerializeObject(object obj)
-        {
-            if (obj == null)
-                return "null";
-
-            Type type = obj.GetType();
-
-            if (type == typeof(bool))
-                return ((bool)obj) ? "true" : "false";
-            else if (type.IsPrimitive)
-                return obj.ToString();
-            else if (type == typeof(string))
-                return string.Format("\"{0}\"", obj.ToString());
-
-            StringBuilder sb = new StringBuilder();
-            sb.Append("{ ");
-
-            var fields = type.GetFields(BindingFlags.Instance | BindingFlags.Public);
-            foreach (var field in fields)
-            {
-                sb.AppendFormat("\"{0}\": {1}, ", field.Name, SerializeObject(field.GetValue(obj)));
-            }
-
-            var properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public);
-            foreach (var property in properties)
-            {
-                if (property.CanRead && property.CanWrite)
-                    sb.AppendFormat("\"{0}\": {1}, ", property.Name, SerializeObject(property.GetValue(obj)));
-            }
-
-            // remove trailing comma, if object has no members to serialize - harmless whitespace will get deleted
-            sb.Remove(sb.Length - 2, 1);
-            sb.Append(" }");
-            return sb.ToString();
-        }
-
-        public static TObject DeserializeObject<TObject>(string data) where TObject : class, new()
-        {
-            return null;
         }
 
         public static void TestActorsSearching()
