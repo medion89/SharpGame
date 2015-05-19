@@ -4,6 +4,7 @@ using SharpGame.Internal;
 
 namespace SharpGame
 {
+    [Serializable]
     public class Actor : GameEntityContainer<Actor>
     {
         private Scene scene;
