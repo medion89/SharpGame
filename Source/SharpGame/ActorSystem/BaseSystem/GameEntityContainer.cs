@@ -3,29 +3,27 @@ using System.Diagnostics;
 
 namespace GameFramework.Internal
 {
-    public abstract class GameEntityContainer<TGameEntity, TSelf> : IGameEntity 
-        where TGameEntity : IGameEntity, IComposed<TSelf>
-        where TSelf : GameEntityContainer<TGameEntity, TSelf>
+    public abstract class GameEntityContainer<TGameEntity> : IGameEntity 
+        where TGameEntity : IGameEntity
+         
     {
-        protected List<TGameEntity> entities;
+        protected List<TGameEntity> children;
 
         protected bool GameStarted { get; private set; }
 
         public GameEntityContainer()
         {
-            entities = new List<TGameEntity>();
+            children = new List<TGameEntity>();
             GameStarted = false;
         }
 
-        public void AddEntity(TGameEntity entity)
+        public void AddChild(TGameEntity entity)
         {
-            entities.Add(entity);
+            children.Add(entity);
             entity.Awake();
-
-            TSelf self = this as TSelf;
-            Debug.Assert(self != null, "Your class is ill-formed, TSelf should be the type of derrived class!");
-            entity.Parent = self;
-
+           // TSelf self = this as TSelf;
+           // Debug.Assert(self != null, "Your class is ill-formed, TSelf should be the type of derrived class!");
+            //entity.Parent = self;
             if (GameStarted)
             {
                 entity.Start();
@@ -36,9 +34,9 @@ namespace GameFramework.Internal
 
         public void Start()
         {
-            for (int i = 0; i < entities.Count; i++)
+            for (int i = 0; i < children.Count; i++)
             {
-                entities[i].Start();
+                children[i].Start();
             }
 
             GameStarted = true;
@@ -46,20 +44,20 @@ namespace GameFramework.Internal
 
         public void Update(float deltaTime)
         {
-            for (int i = 0; i < entities.Count; i++)
+            for (int i = 0; i < children.Count; i++)
             {
-                entities[i].Update(deltaTime);
+                children[i].Update(deltaTime);
             }
         }
 
         public void OnDestroy()
         {
-            for (int i = 0; i < entities.Count; i++)
+            for (int i = 0; i < children.Count; i++)
             {
-                entities[i].OnDestroy();
+                children[i].OnDestroy();
             }
 
-            entities.Clear();
+            children.Clear();
         }
     }
 }

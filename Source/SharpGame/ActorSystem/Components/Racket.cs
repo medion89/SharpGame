@@ -25,17 +25,17 @@ namespace GameFramework
         {
 
 
-            if (Input.IsKeyDown(ConsoleKey.UpArrow)&&Parent.Position.x > 0)
+            if (Input.IsKeyDown(ConsoleKey.UpArrow)&&Actor.WorldPosition.x > 0)
             {
-                
-                Parent.Position = new Vector3(Parent.Position.x-1, Parent.Position.y, Parent.Position.z);
+
+                Actor.WorldPosition = new Vector3(Actor.WorldPosition.x - 1, Actor.WorldPosition.y, Actor.WorldPosition.z);
                 
             }
 
-            if (Input.IsKeyDown(ConsoleKey.DownArrow) && Parent.Position.x <= Console.WindowHeight )
+            if (Input.IsKeyDown(ConsoleKey.DownArrow) && Actor.WorldPosition.x <= Console.WindowHeight)
             {
-                
-                Parent.Position = new Vector3(Parent.Position.x + 1, Parent.Position.y, Parent.Position.z);
+
+                Actor.WorldPosition = new Vector3(Actor.WorldPosition.x + 1, Actor.WorldPosition.y, Actor.WorldPosition.z);
                 
             }
 

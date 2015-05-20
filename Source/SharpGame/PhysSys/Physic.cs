@@ -26,7 +26,7 @@ namespace GameFramework
                     {
                         foreach (Actor Actor in collussionSpace[i,j])
                         {
-                            Actor.OnCollide();
+                            Actor.OnCollide(Actor);
                         }
                     }
 

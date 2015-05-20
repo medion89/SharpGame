@@ -21,12 +21,8 @@ namespace GameFramework
         }
 
         public override void Update(float deltaTime)
-        {
-            
-
-           Parent.Position += direction * speed * deltaTime;
-               
-            
+        {  
+           Actor.WorldPosition += direction * speed * deltaTime;
         }
 
         public override void OnDestroy()

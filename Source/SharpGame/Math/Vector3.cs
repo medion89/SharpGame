@@ -8,6 +8,12 @@ namespace GameFramework
 {
     public struct Vector3
     {
+        #region Predefined Vectors
+        public static readonly Vector3 Zero = new Vector3(0, 0, 0);
+        public static readonly Vector3 Up = new Vector3(0, -1f, 0);
+        public static readonly Vector3 Right = new Vector3(1, 0, 0);
+        #endregion
+
         public float x;
         public float y;
         public float z;
@@ -33,6 +39,14 @@ namespace GameFramework
             {
                 // TODO: provide fast float sqrt method instead of using standart one
                 return (float)System.Math.Sqrt(LengthSquared);
+            }
+        }
+
+        public Vector3 Normalized
+        {
+            get
+            {
+                return this / Length;
             }
         }
 
@@ -68,6 +82,11 @@ namespace GameFramework
                 vec.x * scalar,
                 vec.y * scalar,
                 vec.z * scalar);
+        }
+
+        public static Vector3 operator /(Vector3 vec, float scalar)
+        {
+            return vec * (1f / scalar);
         }
 
         public static Vector3 operator -(Vector3 vec)

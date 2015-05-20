@@ -2,16 +2,15 @@
 
 namespace GameFramework
 {
-    public abstract class ActorComponent : IGameEntity, IComposed<Actor>
+    public abstract class ActorComponent : IGameEntity
     {
-        public Actor Parent { get; set; }
+        public Actor Actor { get; set; }
 
         public Game Game
         {
             get
             {
-                // the game is a parent of the scene, which is a parent of an actor, which is our parent :)
-                Game game = Parent.Parent.Parent;
+                Game game = Actor.Scene.Game;
                 return game;
             }
         }
@@ -25,8 +24,6 @@ namespace GameFramework
         public virtual void OnDestroy() { }
 
         public virtual void OnCollide(Actor C)
-        {
-
-        }
+        {   }
     }
 }

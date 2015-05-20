@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ActorSystem\Actor.cs" />
     <Compile Include="ActorSystem\ActorComponent.cs" />
+    <Compile Include="ActorSystem\BaseSystem\ComponentContanier.cs" />
     <Compile Include="ActorSystem\Components\Ball.cs" />
     <Compile Include="ActorSystem\Components\Collider.cs" />
     <Compile Include="ActorSystem\Components\ColoredText.cs" />
@@ -50,7 +51,6 @@
     <Compile Include="ActorSystem\Components\TestComponentA.cs" />
     <Compile Include="ActorSystem\Components\TestComponentB.cs" />
     <Compile Include="ActorSystem\BaseSystem\GameEntityContainer.cs" />
-    <Compile Include="ActorSystem\BaseSystem\IComposed.cs" />
     <Compile Include="ActorSystem\BaseSystem\IGameEntity.cs" />
     <Compile Include="GraphSys\Graphic.cs" />
     <Compile Include="GraphSys\GraphicsPrimitive.cs" />
