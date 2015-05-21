@@ -8,7 +8,10 @@ namespace SharpGame
     {
         public int TargetFPS { get; set; }
 
+        #region Subsystems
         public Graphics Graphics { get; private set; }
+        public Resources Resources { get; private set; }
+        #endregion
 
         private bool initialized;
         private bool runing;
@@ -17,6 +20,7 @@ namespace SharpGame
         public bool Initialize()
         {
             Graphics = new Graphics();
+            Resources = new Resources();
 
             initialized = true;
             return true;
