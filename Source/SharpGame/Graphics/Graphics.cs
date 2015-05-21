@@ -14,7 +14,7 @@ namespace SharpGame
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        public Graphics() : this(Console.WindowWidth, Console.WindowHeight)
+        public Graphics() : this(Console.WindowWidth, Console.WindowHeight - 1)
         {
         }
 
