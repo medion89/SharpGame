@@ -16,7 +16,7 @@ namespace SharpGame
             Scene scene = new Scene();
 
             JObject contents = JObject.Parse(File.ReadAllText(path));
-            var actors = from actor in contents["actors"]
+            var actors = from actor in contents["__actors"]
                          select DeserializeActor(actor as JObject);
             actors.ToList().ForEach(actor => scene.AddActor(actor));
 
@@ -25,12 +25,15 @@ namespace SharpGame
 
         private Actor DeserializeActor(JObject jobj)
         {
-            Actor actor = new Actor((string)jobj["Name"]);
+            Actor actor = jobj.ToObject<Actor>();
 
-            actor.LocalPosition = jobj["LocalPosition"].ToObject<Vector3>();
-            var components = from component in jobj["components"]
+            var components = from component in jobj["__components"]
                              select DeserializeComponent(component as JObject);
             components.ToList().ForEach(component => actor.AddComponent(component));
+
+            var children = from child in jobj["__children"]
+                           select DeserializeActor(child as JObject);
+            children.ToList().ForEach(child => actor.AddChild(child));
 
             return actor;
         }
