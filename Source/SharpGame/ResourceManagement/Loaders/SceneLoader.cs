@@ -13,35 +13,35 @@ namespace SharpGame
     {
         public object LoadResource(string path)
         {
+            if (!File.Exists(path))
+                return null;
+
             Scene scene = new Scene();
 
             JObject contents = JObject.Parse(File.ReadAllText(path));
-            var actors = from actor in contents["__actors"]
-                         select DeserializeActor(actor as JObject);
-            actors.ToList().ForEach(actor => scene.AddActor(actor));
+            var actorsQuery = contents["__actors"].Select(DeserializeActor);
+            actorsQuery.ToList().ForEach(scene.AddActor);
 
             return scene;
         }
 
-        private Actor DeserializeActor(JObject jobj)
+        private Actor DeserializeActor(JToken jactor)
         {
-            Actor actor = jobj.ToObject<Actor>();
+            Actor actor = jactor.ToObject<Actor>();
 
-            var components = from component in jobj["__components"]
-                             select DeserializeComponent(component as JObject);
-            components.ToList().ForEach(component => actor.AddComponent(component));
+            var componentsQuery = jactor["__components"].Select(DeserializeComponent);
+            componentsQuery.ToList().ForEach(actor.AddComponent);
 
-            var children = from child in jobj["__children"]
-                           select DeserializeActor(child as JObject);
-            children.ToList().ForEach(child => actor.AddChild(child));
+            var childrenQuery = jactor["__children"].Select(DeserializeActor);
+            childrenQuery.ToList().ForEach(actor.AddChild);
 
             return actor;
         }
 
-        private ActorComponent DeserializeComponent(JObject jobj)
+        private ActorComponent DeserializeComponent(JToken jcomponent)
         {
-            Type componentType = Type.GetType((string)jobj["__type"]);
-            return jobj.ToObject(componentType) as ActorComponent;
+            Type componentType = Type.GetType((string)jcomponent["__type"]);
+            return jcomponent.ToObject(componentType) as ActorComponent;
         }
     }
 }
