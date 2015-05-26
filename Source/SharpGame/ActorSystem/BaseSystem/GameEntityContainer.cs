@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace GameFramework.Internal
+namespace SharpGame.Internal
 {
     public abstract class GameEntityContainer<TGameEntity> : IGameEntity 
         where TGameEntity : IGameEntity
-         
     {
         protected List<TGameEntity> children;
 
@@ -17,13 +16,11 @@ namespace GameFramework.Internal
             GameStarted = false;
         }
 
-        public void AddChild(TGameEntity entity)
+        public virtual void AddChild(TGameEntity entity)
         {
             children.Add(entity);
             entity.Awake();
-           // TSelf self = this as TSelf;
-           // Debug.Assert(self != null, "Your class is ill-formed, TSelf should be the type of derrived class!");
-            //entity.Parent = self;
+
             if (GameStarted)
             {
                 entity.Start();
@@ -32,7 +29,7 @@ namespace GameFramework.Internal
 
         public virtual void Awake() { }
 
-        public void Start()
+        public virtual void Start()
         {
             for (int i = 0; i < children.Count; i++)
             {
@@ -42,7 +39,7 @@ namespace GameFramework.Internal
             GameStarted = true;
         }
 
-        public void Update(float deltaTime)
+        public virtual void Update(float deltaTime)
         {
             for (int i = 0; i < children.Count; i++)
             {
@@ -50,7 +47,15 @@ namespace GameFramework.Internal
             }
         }
 
-        public void OnDestroy()
+		public virtual void Draw(float deltaTime)
+		{
+			for (int i = 0; i < children.Count; i++)
+			{
+				children[i].Draw(deltaTime);
+			}
+		}
+
+        public virtual void OnDestroy()
         {
             for (int i = 0; i < children.Count; i++)
             {

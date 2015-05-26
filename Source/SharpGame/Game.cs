@@ -1,23 +1,27 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Threading;
 
-namespace GameFramework
+namespace SharpGame
 {
     public class Game
     {
         public int TargetFPS { get; set; }
 
+        #region Subsystems
+        public Graphics Graphics { get; private set; }
+        public Resources Resources { get; private set; }
+        #endregion
+
         private bool initialized;
         private bool runing;
         private bool exitQueued;
-        public Graphic Graphic;
-        public Physic Physic;
 
         public bool Initialize()
         {
-            Graphic = new Graphic();
-            Physic = new Physic();
-            // here all initialization will occur
+            Graphics = new Graphics();
+            Resources = new Resources();
+
             initialized = true;
             return true;
         }
@@ -26,11 +30,11 @@ namespace GameFramework
         {
             Debug.Assert(initialized);
             Debug.Assert(!runing);
-            
+
             runing = true;
             Stopwatch time = new Stopwatch();
             time.Start();
-            scene.Parent = this;
+            scene.Game = this;
             scene.Awake();
             scene.Start();
 
@@ -39,10 +43,11 @@ namespace GameFramework
                 float delta = time.ElapsedMilliseconds / 1000f;
                 time.Restart();
 
-                Graphic.BuffClear();
+                Graphics.ClearBuffer();
                 scene.Update(delta);
-                Graphic.DrawonScreen();
-                Graphic.BuffClone();
+                scene.Draw(delta);
+                Graphics.DrawOnScreen();
+                Graphics.SwapBuffers();
 
                 SleepToMatchFramerate(TargetFPS, time.ElapsedMilliseconds / 1000f);
             }
@@ -60,10 +65,8 @@ namespace GameFramework
 
         private void Shutdown()
         {
-            Graphic = null;
-            Physic = null;
+            Graphics = null;
 
-            // here will reside all shutdown code
             initialized = false;
         }
 

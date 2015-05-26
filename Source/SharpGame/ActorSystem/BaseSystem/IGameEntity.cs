@@ -1,4 +1,4 @@
-﻿namespace GameFramework.Internal
+﻿namespace SharpGame.Internal
 {
     public interface IGameEntity
     {
@@ -7,6 +7,8 @@
         void Start();
 
         void Update(float deltaTime);
+
+		void Draw (float deltaTime);
 
         void OnDestroy();
     }

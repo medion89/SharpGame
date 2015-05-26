@@ -1,27 +1,15 @@
 ﻿using System;
 
-namespace GameFramework
+namespace SharpGame
 {
     public class TestComponentB : ActorComponent
     {
-        public override void Awake()
-        {
-            Console.WriteLine("TestComponentB Awake()");
-        }
-
-        public override void Start()
-        {
-            Console.WriteLine("TestComponentB Start()");
-        }
+        public Vector3 Direction { get; set; }
+        public float Speed { get; set; }
 
         public override void Update(float deltaTime)
         {
-            Console.WriteLine("TestComponentB Update({0})", deltaTime);
-        }
-
-        public override void OnDestroy()
-        {
-            Console.WriteLine("TestComponentB OnDestroy()");
+            Actor.LocalPosition += Direction * Speed * deltaTime;
         }
     }
 }

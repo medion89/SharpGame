@@ -1,6 +1,6 @@
-﻿using GameFramework.Internal;
+﻿using SharpGame.Internal;
 
-namespace GameFramework
+namespace SharpGame
 {
     public abstract class ActorComponent : IGameEntity
     {
@@ -20,6 +20,8 @@ namespace GameFramework
         public virtual void Start() { }
 
         public virtual void Update(float deltaTime) { }
+
+        public virtual void Draw(float deltaTime) { }
 
         public virtual void OnDestroy() { }
 
