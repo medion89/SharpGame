@@ -67,8 +67,8 @@
     <Compile Include="ActorSystem\Components\TestComponentB.cs" />
     <Compile Include="ActorSystem\BaseSystem\GameEntityContainer.cs" />
     <Compile Include="ActorSystem\BaseSystem\IGameEntity.cs" />
-    <Compile Include="Graphics\GraphicPrimitive.cs" />
-    <Compile Include="Graphics\Graphics.cs" />
+    <Compile Include="Graphics\GraphicsPrimitive.cs" />
+    <Compile Include="Graphics\Graphic.cs" />
     <Compile Include="ActorSystem\PhysSys\Physic.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Game.cs" />

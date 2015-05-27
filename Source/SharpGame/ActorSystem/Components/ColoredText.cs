@@ -30,7 +30,7 @@ namespace SharpGame
 
             if (text == null)
                 return;
-
+            Vector3 actorPosition = Actor.WorldPosition;
             int centrx = (int)text.GetLength(0)/2;
             int centry = (int)text.GetLength(1)/2;
 
@@ -42,10 +42,9 @@ namespace SharpGame
             {
                 for (int y = 0; y < text.GetLength(1); y++)
                 {                    
-                    Game.Graphics.SetSymbol(curentx+x, curenty+y, 
+                    Game.Graphic.SetSymbol(curentx+x, curenty+y, 
                         new GraphicsPrimitive(text[x, y],  Foreground, Background,Actor.WorldPosition.z));
                 }
-
             } 
         }
         public override void OnDestroy()

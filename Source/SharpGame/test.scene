@@ -10,13 +10,13 @@
 		  "__components": [
 				{
 				  "__type": "SharpGame.ColoredText, SharpGame",
-				  "Text": [
+				  "text": [
 					  [ "#", "#", "#" ],
 					  [ "#", "A", "#" ],
 					  [ "#", "#", "#" ]
 				  ],
-				  "BackgroundColor": "DarkGray",
-				  "ForegroundColor": "Cyan"
+				  "Background": "DarkGray",
+				  "Foreground": "Cyan"
 				},
 				{
 				  "__type": "SharpGame.TestComponentB, SharpGame",
@@ -39,13 +39,13 @@
 				  "__components": [
 						{
 						  "__type": "SharpGame.ColoredText, SharpGame",
-						  "Text": [
+						  "text": [
 							  [ "#", "#", "#" ],
 							  [ "#", "B", "#" ],
 							  [ "#", "#", "#" ]
 						  ],
-						  "BackgroundColor": "Cyan",
-						  "ForegroundColor": "DarkGray"
+						  "Background": "Cyan",
+						  "Foreground": "DarkGray"
 						},
 						{
 						  "__type": "SharpGame.TestComponentB, SharpGame",

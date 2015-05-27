@@ -7,18 +7,20 @@ namespace SharpGame
         static void Main(string[] args)
         {
             TestActorsSearching();
+ 
 
             Resources res = new Resources();
             res.RegisterLoader(".scene", new SceneLoader());
             Scene testScene = res.Load<Scene>("test.scene");
-
+            
+            
             Game game = new Game();
             game.TargetFPS = 60;
             game.Initialize();
             game.Run(testScene);
         }
 
-        public static void TestActorsSearching()
+       public static void TestActorsSearching()
         {
             const int TEST_ACTORS_CNT = 5;
             Actor nodeI = new Actor("Node I");

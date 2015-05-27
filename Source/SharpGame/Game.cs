@@ -9,7 +9,7 @@ namespace SharpGame
         public int TargetFPS { get; set; }
 
         #region Subsystems
-        public Graphics Graphics { get; private set; }
+        public Graphic Graphic { get; private set; }
         public Resources Resources { get; private set; }
         #endregion
 
@@ -19,7 +19,7 @@ namespace SharpGame
 
         public bool Initialize()
         {
-            Graphics = new Graphics();
+            Graphic = new Graphic();
             Resources = new Resources();
 
             initialized = true;
@@ -43,11 +43,11 @@ namespace SharpGame
                 float delta = time.ElapsedMilliseconds / 1000f;
                 time.Restart();
 
-                Graphics.ClearBuffer();
+                Graphic.BuffClear();
                 scene.Update(delta);
                 scene.Draw(delta);
-                Graphics.DrawOnScreen();
-                Graphics.SwapBuffers();
+                Graphic.DrawonScreen();
+                Graphic.BuffClone();
 
                 SleepToMatchFramerate(TargetFPS, time.ElapsedMilliseconds / 1000f);
             }
@@ -65,7 +65,7 @@ namespace SharpGame
 
         private void Shutdown()
         {
-            Graphics = null;
+            Graphic = null;
 
             initialized = false;
         }
