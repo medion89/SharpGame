@@ -59,13 +59,17 @@
     <Compile Include="ActorSystem\Actor.cs" />
     <Compile Include="ActorSystem\ActorComponent.cs" />
     <Compile Include="ActorSystem\BaseSystem\ComponentContainer.cs" />
+    <Compile Include="ActorSystem\Components\Ball.cs" />
+    <Compile Include="ActorSystem\Components\Collider.cs" />
     <Compile Include="ActorSystem\Components\ColoredText.cs" />
+    <Compile Include="ActorSystem\Components\Racket.cs" />
     <Compile Include="ActorSystem\Components\TestComponentA.cs" />
     <Compile Include="ActorSystem\Components\TestComponentB.cs" />
     <Compile Include="ActorSystem\BaseSystem\GameEntityContainer.cs" />
     <Compile Include="ActorSystem\BaseSystem\IGameEntity.cs" />
     <Compile Include="Graphics\GraphicPrimitive.cs" />
     <Compile Include="Graphics\Graphics.cs" />
+    <Compile Include="ActorSystem\PhysSys\Physic.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Math\Vector3.cs" />

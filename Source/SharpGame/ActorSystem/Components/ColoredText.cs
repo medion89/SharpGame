@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameFramework
+namespace SharpGame
 {
     public class ColoredText : ActorComponent
     {
@@ -42,7 +42,7 @@ namespace GameFramework
             {
                 for (int y = 0; y < text.GetLength(1); y++)
                 {                    
-                    Game.Graphic.SetSymbol(curentx+x, curenty+y, 
+                    Game.Graphics.SetSymbol(curentx+x, curenty+y, 
                         new GraphicsPrimitive(text[x, y],  Foreground, Background,Actor.WorldPosition.z));
                 }
 
