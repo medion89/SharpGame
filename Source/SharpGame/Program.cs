@@ -8,16 +8,51 @@ namespace SharpGame
         {
             TestActorsSearching();
  
+            Scene scene = new Scene();
 
-            Resources res = new Resources();
-            res.RegisterLoader(".scene", new SceneLoader());
-            Scene testScene = res.Load<Scene>("test.scene");
+            Actor player = new Actor();
+            player.WorldPosition = new Vector3(5, 5, 0);
+
+            ColoredText racket = new ColoredText();
+            racket.text = new char [,]{
+                           {'#'},
+                           {'#'},
+                           {'#'},
+                           {'#'},
+                           {'#'}};
+            racket.Foreground = System.ConsoleColor.Blue;
+            racket.Background = System.ConsoleColor.Cyan;
+            Racket control = new Racket();
+
+
+            Actor Ball = new Actor();
+            Ball.WorldPosition = new Vector3(5, 40, 0);
+            Ball move = new Ball();
+            move.Speed = 2;
+            move.Direction = new Vector3(0, -1, 0);
+            ColoredText ball = new ColoredText();
+            ball.text = new char[,] { {'O'} };
+            ball.Background = System.ConsoleColor.DarkBlue;
+            ball.Foreground = System.ConsoleColor.DarkCyan;
             
+            
+
+
+
+            // Resources res = new Resources();
+            //res.RegisterLoader(".pong", new SceneLoader());
+            //Scene testScene = res.Load<Scene>("game.pong");
+            scene.AddActor(player);
+            scene.AddActor(Ball);
+            player.AddComponent(racket);
+            player.AddComponent(control);
+            Ball.AddComponent(ball);
+            Ball.AddComponent(move);
             
             Game game = new Game();
             game.TargetFPS = 60;
             game.Initialize();
-            game.Run(testScene);
+            game.Run(scene);
         }
 
        public static void TestActorsSearching()

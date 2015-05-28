@@ -8,7 +8,7 @@ namespace SharpGame
 {
     public class Physic
     {
-        /* List<Actor>[,] collussionSpace;
+        List<Actor>[,] collussionSpace;
          
          public Physic()
          {
@@ -31,7 +31,7 @@ namespace SharpGame
                      }
 
                     
-         }*/
+         }
 
     }
 }

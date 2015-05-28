@@ -10,8 +10,8 @@ namespace SharpGame
     public class Collider : ActorComponent
     {
 
-        List<Actor> colliderlist;
-
+        List<Vector3> colliderlist;
+        
 
         public override void Awake()
         {
@@ -25,22 +25,6 @@ namespace SharpGame
 
         public override void Update(float deltaTime)
         {
-            /* int centrx = (int)shape.GetLength(0) / 2;
-             int centry = (int)shape.GetLength(1) / 2;
-
-             int curentx = (int)Actor.WorldPosition.x - centrx;
-             int curenty = (int)Actor.WorldPosition.y - centry;
-
-
-             for (int x = 0; x < shape.GetLength(0); x++)
-             {
-
-                 for (int y = 0; y < shape.GetLength(1); y++)
-                 {
-                     if (curenty + y < 0 || curentx + x < 0)
-                         continue;
-
-                     Game.Physic.checkin();*/
 
 
         }

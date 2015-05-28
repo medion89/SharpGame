@@ -8,8 +8,8 @@ namespace SharpGame
 {
     public class Ball : ActorComponent
     {
-        public Vector3 direction { get; set; }
-        public float speed { get; set; }
+        public Vector3 Direction { get; set; }
+        public float Speed { get; set; }
         public override void Awake()
         {
 
@@ -22,7 +22,7 @@ namespace SharpGame
 
         public override void Update(float deltaTime)
         {  
-           Actor.WorldPosition += direction * speed * deltaTime;
+           Actor.WorldPosition += Direction * Speed * deltaTime;
         }
 
         public override void OnDestroy()

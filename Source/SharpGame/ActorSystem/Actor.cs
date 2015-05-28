@@ -164,6 +164,14 @@ namespace SharpGame
 
             base.OnDestroy();
         }
+
+        public override void OnCollide()
+        {
+            componentContainer.OnCollide(Actor act);
+            
+            base.Oncollide();
+        
+        }
         #endregion
     }
 }

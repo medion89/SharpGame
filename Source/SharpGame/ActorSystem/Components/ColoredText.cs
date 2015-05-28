@@ -30,6 +30,7 @@ namespace SharpGame
 
             if (text == null)
                 return;
+
             Vector3 actorPosition = Actor.WorldPosition;
             int centrx = (int)text.GetLength(0)/2;
             int centry = (int)text.GetLength(1)/2;
