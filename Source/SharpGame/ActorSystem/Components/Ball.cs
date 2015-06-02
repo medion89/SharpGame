@@ -17,17 +17,23 @@ namespace SharpGame
 
         public override void Start()
         {
-
+            
         }
 
         public override void Update(float deltaTime)
         {  
            Actor.WorldPosition += Direction * Speed * deltaTime;
+
         }
 
         public override void OnDestroy()
         {
 
+        }
+
+        public override void OnCollide(Actor C)
+        {
+            Actor.WorldPosition = new Vector3(Actor.WorldPosition.x, Actor.WorldPosition.y * -1,Actor.WorldPosition.z);
         }
 
     }

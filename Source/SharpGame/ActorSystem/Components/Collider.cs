@@ -10,7 +10,7 @@ namespace SharpGame
     public class Collider : ActorComponent
     {
 
-        List<Vector3> colliderlist;
+        private List<Vector3> ColliderList;
         
 
         public override void Awake()
@@ -25,8 +25,8 @@ namespace SharpGame
 
         public override void Update(float deltaTime)
         {
-
-
+            foreach (Vector3 Vec in ColliderList)
+                Game.Physic.ToCollSpace(Actor.WorldPosition, Actor);
         }
 
         public override void OnDestroy()

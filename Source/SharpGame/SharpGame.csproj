@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -79,6 +80,7 @@
     <Compile Include="ResourceManagement\Loaders\ILoader.cs" />
     <Compile Include="ResourceManagement\Loaders\SceneLoader.cs" />
     <Compile Include="ResourceManagement\Resources.cs" />
+    <Compile Include="ResourceManagement\serialisation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

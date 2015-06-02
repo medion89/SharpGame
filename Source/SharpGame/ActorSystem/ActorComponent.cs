@@ -25,7 +25,7 @@ namespace SharpGame
 
         public virtual void OnDestroy() { }
 
-        public virtual void OnCollide(Actor C)
+        public virtual void OnCollide(Actor actor)
         {   }
     }
 }

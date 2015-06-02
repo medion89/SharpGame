@@ -11,6 +11,7 @@ namespace SharpGame
         #region Subsystems
         public Graphic Graphic { get; private set; }
         public Resources Resources { get; private set; }
+        public Physic Physic { get; private set; }
         #endregion
 
         private bool initialized;
@@ -21,6 +22,7 @@ namespace SharpGame
         {
             Graphic = new Graphic();
             Resources = new Resources();
+            Physic = new Physic();
 
             initialized = true;
             return true;
@@ -44,6 +46,7 @@ namespace SharpGame
                 time.Restart();
 
                 Graphic.BuffClear();
+                Physic.BuffClear();
                 scene.Update(delta);
                 scene.Draw(delta);
                 Graphic.DrawonScreen();

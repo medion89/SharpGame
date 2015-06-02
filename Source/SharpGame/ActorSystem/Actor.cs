@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using SharpGame.Internal;
+using System.Runtime.Serialization;
+using Newtonsoft.Json; 
 
 namespace SharpGame
-{
+{   
     public class Actor : GameEntityContainer<Actor>
     {
         private Scene scene;
+        
 
         public Scene Scene
         {
@@ -24,6 +27,9 @@ namespace SharpGame
                 }
             }
         }
+        public List<Actor> Children { get{return children;} }
+
+        public List<ActorComponent> Component { get { return componentContainer.component; } }
 
         public Actor Parent { get; set; }
 
@@ -165,11 +171,13 @@ namespace SharpGame
             base.OnDestroy();
         }
 
-        public override void OnCollide()
-        {
-            componentContainer.OnCollide(Actor act);
-            
-            base.Oncollide();
+        public void OnCollide(Actor Act)
+        {    
+            componentContainer.OnCollide(Act);
+            foreach (Actor comp in children)
+            {
+                comp.OnCollide(Act);
+            }
         
         }
         #endregion

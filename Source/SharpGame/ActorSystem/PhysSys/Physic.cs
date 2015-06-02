@@ -8,30 +8,40 @@ namespace SharpGame
 {
     public class Physic
     {
-        List<Actor>[,] collussionSpace;
-         
-         public Physic()
-         {
-             collussionSpace = new List<Actor>[50, 45];
-                for(int i=0;i<collussionSpace.GetLength(0);i++)
-                    for(int j=0;j<collussionSpace.GetLength(1);j++)
-                        collussionSpace[i,j]= new List<Actor>();
-         }
+        List<Actor>[,] CollussionSpace;
 
-         public void checkin()
-         {
-             for(int i=0; i<collussionSpace.GetLength(0);i++)
-                 for(int j=0; j<collussionSpace.GetLength(1);j++)
-                     if(collussionSpace[i,j].Count>1)
-                     {
-                         foreach (Actor Actor in collussionSpace[i,j])
-                         {
-                             Actor.OnCollide(Actor);
-                         }
-                     }
+        public Physic()
+        {
+            CollussionSpace = new List<Actor>[50, 45];
+            for (int i = 0; i < CollussionSpace.GetLength(0); i++)
+                for (int j = 0; j < CollussionSpace.GetLength(1); j++)
+                    CollussionSpace[i, j] = new List<Actor>();
+        }
 
-                    
-         }
+        public void ToCollSpace(Vector3 Position, Actor Actor)
+        {
+            int y = (int)Position.y;
+            int x = (int)Position.x;
 
+
+            CollussionSpace[x, y].Add(Actor);
+            if (CollussionSpace[x, y].Count > 1)
+            {
+                foreach (Actor Act in CollussionSpace[x, y])
+                {
+                    Actor.OnCollide(Act);
+                }
+            }
+        }
+        public void BuffClear()
+        {
+            for (int j = 0; j < CollussionSpace.GetLength(0); j++)
+            {
+                for (int k = 0; k < CollussionSpace.GetLength(1); k++)
+                {
+                    CollussionSpace[j, k].Clear();
+                }
+            }
+        }
     }
 }

@@ -8,6 +8,8 @@ namespace SharpGame
     {
         public Game Game { get; set; }
 
+        public List<Actor> Actors { get { return rootActor.Children; } }
+
         private Actor rootActor;
 
         public Scene()
@@ -59,6 +61,7 @@ namespace SharpGame
             rootActor.OnDestroy();
             rootActor = null;
         }
+        
         #endregion
     }
 }

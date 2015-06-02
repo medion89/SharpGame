@@ -10,6 +10,8 @@ namespace SharpGame.Internal
     {
         public Actor Actor { get; private set; }
 
+        public List<ActorComponent> component { get { return children; } }
+
         public ComponentContainer(Actor actor)
         {
             this.Actor = actor;
@@ -44,6 +46,14 @@ namespace SharpGame.Internal
             }
 
             return foundComponents;
+        }
+
+        public void OnCollide(Actor act)
+        {
+            foreach (ActorComponent comp in children)
+            {
+                comp.OnCollide(act);
+            }
         }
     }
 }

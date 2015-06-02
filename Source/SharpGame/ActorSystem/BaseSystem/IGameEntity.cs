@@ -12,6 +12,6 @@
 
         void OnDestroy();
 
-        void OnCollide();
+      
     }
 }
